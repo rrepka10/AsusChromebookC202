@@ -8,7 +8,7 @@ Link to a good general overview:  https://docs.mrchromebox.tech/docs/getting-sta
 Data:
 Asus c202s   Model c202sa—ys02   intel model 7265ngw   Chipset: Intel Braswell  HW ID: Terra
 
-Model:  ASUS Chromebook C202SA	HW ID: TERRA	YEar: 2016	Processor: Intel Braswell Firmware: Required Full Firmware [UEFI]
+Model:  ASUS Chromebook C202SA	HW ID: TERRA	Year: 2016	Processor: Intel Braswell Firmware: Required Full Firmware [UEFI]
 Chrome OS:   103.0.5060.53 – 64 bit  - ELO Jun 2022  hw id Terra   4gb ram, 16 gb ssd
 
 Choose, download and burn (Use Rufus) install to a 10+GB USB:   https://releases.ubuntu.com/jammy/
@@ -64,5 +64,7 @@ Disable and remove the swap file - saves 2GB or move it to the SD card
 
 Use the symbolic link command ```ln -s targetDir link``` in your home to move data like "Downloads" to the SD card
 saving more primary disk space
+
+Note: Ubuntu 24.04 does not support HDMI Audio on the Braswell chip set, you must use Ubuntu 20.04 or Min 20.x
 
 
