@@ -1,4 +1,4 @@
-# AzusChromebookC202
+# AsusChromebookC202
 Upgrade an Asus Chromebook C202S or C202SA to Ubuntu Linux 
 
 This includes all the HW and software instructions necessary to upgrade your Asus Chromebook model C202S or C202SA to Ubuntu Linux.
