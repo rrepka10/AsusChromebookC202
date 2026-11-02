@@ -68,3 +68,60 @@ saving more primary disk space
 Note: Ubuntu 24.04 does not support HDMI Audio on the Braswell chip set, you must use Ubuntu 20.04 or Min 20.x
 
 
+## Move the SNAP directories
+By default the snap directories are put in the primary partition and can easily consumer 50% of it.  The following is a rough
+outline of how to move the SNAP directories to the SD card slot.  It is better to move the SNAP directories before 
+installing a lot of software.  Note, once you move SNAP to the sd card you can't remove the
+card.
+
+Stop snapd
+```
+sudo systemctl stop snapd
+sudo systemctl stop snapd.socket
+```
+
+This hard mount the SD card drive
+```
+lsblk -f
+```
+gets the uuid of the sd card, e.g. a74b5fd0-2592-4adc-806c-63d17f9cf704
+
+```
+sudo mkdir -p /mnt/snapd
+```
+
+```
+sudo vi /etc/fstab
+```
+add   
+
+```
+UUID=a74b5fd0-2592-4adc-806c-63d17f9cf704  /mnt/snapd  ext4  defaults  0  2
+/mnt/snapd/snapd  /var/lib/snapd  none  bind  0  0
+```
+
+Now copy the data
+```
+sudo mkdir -p /mnt/snapd/snapd 
+sudo rsync -aHAXx /var/lib/snapd/   /mnt/snapd/snapd/
+```
+
+save the data just in case, remove it when you are happy with the conversion
+```
+sudo mv /var/lib/snapd /var/lib/snapd.old
+```
+
+Test
+```
+sudo systemctl start snapd.socket
+sudo systemctl start snapd
+snap list
+```
+
+If you have problems, try to refresh snap
+```sudo snap refresh```
+
+
+
+
+
